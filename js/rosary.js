@@ -21,34 +21,38 @@ const ROSARY = (() => {
 
   // Construit la liste des grains (positions) et l'ordre physique du fil
   // (pour tracer les segments de chaîne).
+  //
+  // Un chapelet se prie en partant du grain immédiatement à DROITE de la
+  // médaille, puis en tournant dans le sens ANTI-HORAIRE (droite -> haut ->
+  // gauche -> bas) pour revenir à la médaille après la 5e dizaine. Dans notre
+  // convention d'angle (0°=haut, 90°=droite, 180°=bas, croissant = sens
+  // horaire), le sens anti-horaire correspond à un angle qui DÉCROÎT.
   function buildLayout() {
     const beads = {};
     const loopOrder = [];
 
-    const startAngle = 180 + GAP_DEG / 2;
+    const startAngle = 180 - GAP_DEG / 2;
     const totalSpan = 360 - GAP_DEG;
     const segSpan = totalSpan / 5;
 
     for (let d = 0; d < 5; d++) {
-      const A = startAngle + d * segSpan;
+      const A = startAngle - d * segSpan;
 
       const largePos = polarToXY(LOOP_CX, LOOP_CY, LOOP_R, A);
       beads[`large-${d}`] = { id: `large-${d}`, kind: "large", r: R_LARGE, ...largePos };
       loopOrder.push(`large-${d}`);
 
+      // 10 grains "Je vous salue Marie", régulièrement espacés jusqu'au
+      // grain large suivant (à segSpan). Les prières Gloire au Père et
+      // Fatima se disent sur ce 10e grain (pas de grain dédié, comme sur
+      // un vrai chapelet).
       for (let i = 0; i < 10; i++) {
-        const angle = A + (segSpan * (i + 1)) / 11;
+        const angle = A - (segSpan * (i + 1)) / 11;
         const pos = polarToXY(LOOP_CX, LOOP_CY, LOOP_R, angle);
         const id = `small-${d}-${i}`;
         beads[id] = { id, kind: "small", r: R_SMALL, ...pos };
         loopOrder.push(id);
       }
-
-      const junctionAngle = A + (segSpan * 10.5) / 11;
-      const jPos = polarToXY(LOOP_CX, LOOP_CY, LOOP_R, junctionAngle);
-      const jId = `junction-${d}`;
-      beads[jId] = { id: jId, kind: "small", r: R_SMALL, ...jPos };
-      loopOrder.push(jId);
     }
 
     // Médaille : point bas de la boucle (angle 180°).
@@ -101,8 +105,8 @@ const ROSARY = (() => {
       for (let i = 0; i < 10; i++) {
         push(`small-${d}-${i}`, "prayer", { prayerKey: "hailMary" });
       }
-      push(`junction-${d}`, "prayer", { prayerKey: "gloryBe" });
-      push(`junction-${d}`, "prayer", { prayerKey: "fatimaPrayer" });
+      push(`small-${d}-9`, "prayer", { prayerKey: "gloryBe" });
+      push(`small-${d}-9`, "prayer", { prayerKey: "fatimaPrayer" });
     }
 
     push("medal", "prayer", { prayerKey: "salveRegina" });
