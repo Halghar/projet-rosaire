@@ -10,48 +10,116 @@
 const PRAYERS = {
   signOfCross: {
     title: "Signe de croix",
-    text: "",
+    text: "Au nom du Père, et du Fils, et du Saint-Esprit. Amen.",
   },
   credo: {
     title: "Symbole des Apôtres",
-    text: "",
+    text: "Je crois en Dieu, le Père tout-puissant, Créateur du ciel et de la terre. Et en Jésus-Christ, son Fils unique, notre Seigneur, qui a été conçu du Saint-Esprit, est né de la Vierge Marie, a souffert sous Ponce Pilate, a été crucifié, est mort et a été enseveli, est descendu aux enfers, le troisième jour est ressuscité des morts, est monté aux cieux, est assis à la droite de Dieu le Père tout-puissant, d'où il viendra juger les vivants et les morts. Je crois en l'Esprit Saint, à la sainte Église catholique, à la communion des saints, à la rémission des péchés, à la résurrection de la chair, à la vie éternelle. Amen.",
   },
   ourFather: {
     title: "Notre Père",
-    text: "",
+    text: "Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd'hui notre pain de ce jour. Pardonne-nous nos offenses, comme nous pardonnons aussi à ceux qui nous ont offensés. Et ne nous laisse pas entrer en tentation, mais délivre-nous du mal. Amen.",
   },
   hailMary: {
     title: "Je vous salue Marie",
-    text: "",
+    text: "Je vous salue, Marie, pleine de grâce, le Seigneur est avec vous. Vous êtes bénie entre toutes les femmes, et Jésus, le fruit de vos entrailles, est béni. Sainte Marie, Mère de Dieu, priez pour nous pauvres pécheurs, maintenant et à l'heure de notre mort. Amen.",
   },
   gloryBe: {
     title: "Gloire au Père",
-    text: "",
+    text: "Gloire au Père, et au Fils, et au Saint-Esprit, comme il était au commencement, maintenant et toujours, et dans les siècles des siècles. Amen.",
   },
   fatimaPrayer: {
     title: "Prière de Fatima (Ô mon Jésus)",
-    text: "",
+    text: "Ô mon Jésus, pardonnez-nous nos péchés, préservez-nous du feu de l'enfer, conduisez au ciel toutes les âmes, surtout celles qui ont le plus besoin de votre miséricorde.",
   },
   salveRegina: {
     title: "Salve Regina",
-    text: "",
+    text: "Salut, ô Reine, Mère de miséricorde, notre vie, notre douceur et notre espérance, salut ! Enfants d'Ève, exilés, nous crions vers vous ; vers vous, nous soupirons, gémissant et pleurant dans cette vallée de larmes. Ô vous, notre avocate, tournez vers nous vos regards miséricordieux. Et, après cet exil, montrez-nous Jésus, le fruit béni de vos entrailles. Ô clémente, ô miséricordieuse, ô douce Vierge Marie.",
   },
   memorare: {
     title: "Souvenez-vous (Memorare)",
-    text: "",
+    text: "Souvenez-vous, ô très miséricordieuse Vierge Marie, qu'on n'a jamais entendu dire qu'aucun de ceux qui ont eu recours à votre protection, imploré votre assistance et réclamé votre secours, ait été abandonné. Animé d'une pareille confiance, ô Vierge des vierges, ô ma Mère, je viens à vous, et gémissant sous le poids de mes péchés, je me prosterne à vos pieds. Ô Mère du Verbe incarné, ne méprisez pas mes prières, mais écoutez-les favorablement et daignez les exaucer. Amen.",
   },
   prayerToStJoseph: {
     title: "Prière à saint Joseph",
-    text: "",
+    text: "À vous, bienheureux Joseph, nous avons recours dans notre tribulation ; et après avoir imploré le secours de votre très sainte épouse, nous demandons avec confiance votre patronage. Nous vous en supplions, par cette charité qui vous unissait à l'Immaculée Vierge Mère de Dieu, et par l'amour paternel que vous avez porté à l'Enfant Jésus, jetez, nous vous en conjurons, un regard favorable sur l'héritage que Jésus-Christ a acquis par son sang, et assistez-nous dans nos besoins par votre secours et votre puissance. Protégez, ô très prévoyant gardien de la divine Famille, la race choisie de Jésus-Christ ; écartez de nous, tendre père, toute souillure d'erreur et de vice ; assistez-nous du haut du ciel, ô notre puissant libérateur, dans ce combat contre les puissances des ténèbres ; et comme vous avez arraché autrefois l'Enfant Jésus au péril de sa vie, défendez aujourd'hui la sainte Église de Dieu contre les embûches de ses ennemis et contre toute adversité. Couvrez-nous tous d'une protection de tous les instants, afin qu'à votre exemple et soutenus par votre secours, nous puissions vivre saintement, mourir pieusement et obtenir la félicité éternelle dans les cieux. Amen.",
   },
 };
 
 const LITANIES = {
   loreto: {
     title: "Litanies de la Vierge Marie (Litanies de Lorette)",
-    // Liste des invocations. Remplissez chaque ligne vous-même.
-    // Exemple de structure : { call: "Kyrie eleison", response: "" }
-    lines: [],
+    lines: [
+      { call: "Seigneur", response: "ayez pitié de nous." },
+      { call: "Christ", response: "ayez pitié de nous." },
+      { call: "Seigneur", response: "ayez pitié de nous." },
+      { call: "Christ, écoutez-nous", response: "Christ, écoutez-nous." },
+      { call: "Christ, exaucez-nous", response: "Christ, exaucez-nous." },
+      { call: "Père céleste, qui êtes Dieu", response: "ayez pitié de nous." },
+      { call: "Fils, Rédempteur du monde, qui êtes Dieu", response: "ayez pitié de nous." },
+      { call: "Esprit-Saint, qui êtes Dieu", response: "ayez pitié de nous." },
+      { call: "Trinité Sainte, qui êtes un seul Dieu", response: "ayez pitié de nous." },
+
+      { call: "Sainte Marie", response: "priez pour nous." },
+      { call: "Sainte Mère de Dieu", response: "priez pour nous." },
+      { call: "Sainte Vierge des vierges", response: "priez pour nous." },
+      { call: "Mère du Christ", response: "priez pour nous." },
+      { call: "Mère de l'Église", response: "priez pour nous." },
+      { call: "Mère de la divine grâce", response: "priez pour nous." },
+      { call: "Mère très pure", response: "priez pour nous." },
+      { call: "Mère très chaste", response: "priez pour nous." },
+      { call: "Mère toujours vierge", response: "priez pour nous." },
+      { call: "Mère sans tache", response: "priez pour nous." },
+      { call: "Mère aimable", response: "priez pour nous." },
+      { call: "Mère admirable", response: "priez pour nous." },
+      { call: "Mère du bon conseil", response: "priez pour nous." },
+      { call: "Mère du Créateur", response: "priez pour nous." },
+      { call: "Mère du Sauveur", response: "priez pour nous." },
+
+      { call: "Vierge très prudente", response: "priez pour nous." },
+      { call: "Vierge digne de vénération", response: "priez pour nous." },
+      { call: "Vierge digne de louange", response: "priez pour nous." },
+      { call: "Vierge puissante", response: "priez pour nous." },
+      { call: "Vierge clémente", response: "priez pour nous." },
+      { call: "Vierge fidèle", response: "priez pour nous." },
+
+      { call: "Miroir de justice", response: "priez pour nous." },
+      { call: "Siège de la Sagesse", response: "priez pour nous." },
+      { call: "Cause de notre joie", response: "priez pour nous." },
+      { call: "Vase spirituel", response: "priez pour nous." },
+      { call: "Vase d'honneur", response: "priez pour nous." },
+      { call: "Vase insigne de dévotion", response: "priez pour nous." },
+      { call: "Rose mystique", response: "priez pour nous." },
+      { call: "Tour de David", response: "priez pour nous." },
+      { call: "Tour d'ivoire", response: "priez pour nous." },
+      { call: "Maison d'or", response: "priez pour nous." },
+      { call: "Arche d'alliance", response: "priez pour nous." },
+      { call: "Porte du ciel", response: "priez pour nous." },
+      { call: "Étoile du matin", response: "priez pour nous." },
+
+      { call: "Salut des infirmes", response: "priez pour nous." },
+      { call: "Refuge des pécheurs", response: "priez pour nous." },
+      { call: "Consolatrice des affligés", response: "priez pour nous." },
+      { call: "Secours des chrétiens", response: "priez pour nous." },
+
+      { call: "Reine des Anges", response: "priez pour nous." },
+      { call: "Reine des Patriarches", response: "priez pour nous." },
+      { call: "Reine des Prophètes", response: "priez pour nous." },
+      { call: "Reine des Apôtres", response: "priez pour nous." },
+      { call: "Reine des Martyrs", response: "priez pour nous." },
+      { call: "Reine des Confesseurs", response: "priez pour nous." },
+      { call: "Reine des Vierges", response: "priez pour nous." },
+      { call: "Reine de tous les Saints", response: "priez pour nous." },
+      { call: "Reine conçue sans le péché originel", response: "priez pour nous." },
+      { call: "Reine assumée dans le ciel", response: "priez pour nous." },
+      { call: "Reine du très saint Rosaire", response: "priez pour nous." },
+      { call: "Reine de la famille", response: "priez pour nous." },
+      { call: "Reine de la paix", response: "priez pour nous." },
+
+      { call: "Agneau de Dieu, qui effacez les péchés du monde", response: "pardonnez-nous, Seigneur." },
+      { call: "Agneau de Dieu, qui effacez les péchés du monde", response: "exaucez-nous, Seigneur." },
+      { call: "Agneau de Dieu, qui effacez les péchés du monde", response: "ayez pitié de nous." },
+    ],
   },
 };
 
