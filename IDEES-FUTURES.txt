@@ -1,0 +1,25 @@
+Idées pour plus tard (pas dans la version actuelle)
+=====================================================
+
+1. Application Android native (Kotlin / Jetpack Compose)
+   - Portage natif une fois la PWA validée à l'usage.
+   - Les données (js/data.js : prières, mystères, méditations) sont déjà
+     structurées et réutilisables telles quelles pour peupler l'app Kotlin.
+
+2. Anglais et latin
+   - La structure de js/data.js est prête pour plusieurs langues
+     (le champ `text` de chaque prière peut devenir un objet {fr, en, la}).
+   - Ajouter un sélecteur de langue dans l'interface (css/styles.css a
+     déjà les styles de boutons réutilisables, cf. .series-btn).
+
+3. Option "3 séries traditionnelles" (calendrier pré-2002, sans les
+   mystères lumineux du jeudi) — pour ceux qui suivent l'ancien usage.
+
+4. Mode "Neuvaine à sainte Anne"
+   - Suivi des 9 jours (17-25 juillet), prière quotidienne à sainte Anne,
+     litanies de sainte Anne, progression cochée jour par jour.
+
+5. Rappels / notifications quotidiennes (nécessite du natif ou les
+   Web Push Notifications côté PWA).
+
+6. Audio des prières (fichiers audio ou synthèse vocale).

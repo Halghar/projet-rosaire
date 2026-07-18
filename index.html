@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#2b2440" />
+<title>Rosaire</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Rosaire</h1>
+</header>
+
+<main id="app">
+
+  <section id="tab-today" class="tab-panel" data-tab-panel="today">
+    <p class="today-date" id="today-date"></p>
+
+    <div class="series-picker" id="today-series-picker" role="group" aria-label="Choisir une série de mystères"></div>
+
+    <h2 id="today-series-title"></h2>
+
+    <ol class="mystery-list" id="today-mystery-list"></ol>
+
+    <button class="btn-primary" id="start-rosary-btn" type="button">Prier ce chapelet</button>
+  </section>
+
+  <section id="tab-pray" class="tab-panel" data-tab-panel="pray" hidden>
+    <div class="pray-progress" id="pray-progress"></div>
+
+    <div class="pray-card" id="pray-card">
+      <h2 id="pray-step-label"></h2>
+      <div id="pray-step-meta"></div>
+      <div id="pray-step-text" class="prayer-text"></div>
+    </div>
+
+    <div class="pray-controls">
+      <button class="btn-secondary" id="prev-step-btn" type="button">Précédent</button>
+      <button class="btn-primary btn-tap" id="next-step-btn" type="button">Suivant</button>
+    </div>
+
+    <svg id="rosary-svg" class="rosary-svg" aria-hidden="true"></svg>
+
+    <button class="btn-link" id="restart-rosary-btn" type="button">Recommencer</button>
+  </section>
+
+  <section id="tab-prayers" class="tab-panel" data-tab-panel="prayers" hidden>
+    <h2>Prières</h2>
+    <div id="prayers-list" class="prayers-list"></div>
+
+    <h2>Litanies</h2>
+    <div id="litanies-list" class="prayers-list"></div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn" data-tab="today" type="button">Aujourd'hui</button>
+  <button class="nav-btn" data-tab="pray" type="button">Prier</button>
+  <button class="nav-btn" data-tab="prayers" type="button">Prières</button>
+</nav>
+
+<script src="js/data.js"></script>
+<script src="js/rosary.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

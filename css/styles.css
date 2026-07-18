@@ -1,0 +1,318 @@
+:root {
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --text: #2b2440;
+  --text-muted: #6b6478;
+  --accent: #6a4c93;
+  --accent-contrast: #ffffff;
+  --border: #e2dcd3;
+  --gold: #b8933a;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16121f;
+    --surface: #211b30;
+    --text: #ece7f5;
+    --text-muted: #a99fc0;
+    --accent: #9878c9;
+    --accent-contrast: #16121f;
+    --border: #362c4a;
+    --gold: #d4b05e;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  padding: 1rem 1rem 0.5rem;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#app {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 1rem 5.5rem;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tab-panel h2 {
+  font-size: 1.1rem;
+  color: var(--accent);
+  margin: 1.2rem 0 0.6rem;
+}
+
+.today-date {
+  text-align: center;
+  color: var(--text-muted);
+  text-transform: capitalize;
+  margin: 0.5rem 0 1rem;
+}
+
+.series-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.series-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.series-btn.active {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.series-btn.is-today:not(.active)::after {
+  content: " •";
+  color: var(--gold);
+}
+
+.mystery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mystery-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.mystery-item h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.mystery-ref {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+
+.mystery-meditation {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  margin: 1.2rem 0 0.5rem;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.btn-link {
+  display: block;
+  margin: 0.6rem auto 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.pray-progress {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+
+.rosary-svg {
+  width: 100%;
+  max-width: 240px;
+  display: block;
+  margin: 1.2rem auto 0.4rem;
+}
+
+.rosary-chain line {
+  stroke: var(--border);
+  stroke-width: 2;
+}
+
+.bead {
+  fill: var(--surface);
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  transition: fill 0.2s, r 0.2s;
+}
+
+.bead-cross rect {
+  fill: var(--gold);
+}
+
+.bead.done {
+  fill: var(--gold);
+  opacity: 0.55;
+}
+
+.bead.current {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.bead-cross.current rect {
+  fill: var(--accent);
+}
+
+.pray-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  margin: 0.8rem 0;
+  min-height: 5rem;
+}
+
+.pray-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+}
+
+.prayer-text {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.prayer-text.placeholder {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.pray-controls {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.pray-controls .btn-tap {
+  flex: 2;
+  margin: 0;
+  font-size: 1.05rem;
+  padding: 1.1rem;
+}
+
+.pray-controls .btn-secondary {
+  flex: 1;
+}
+
+.prayers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.prayer-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.prayer-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 0.9rem 0.4rem;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.nav-btn.active {
+  color: var(--accent);
+  font-weight: bold;
+}
