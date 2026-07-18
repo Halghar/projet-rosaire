@@ -3,16 +3,21 @@
 
 const ROSARY = (() => {
   // --- Géométrie du diagramme -------------------------------------------
-  const VIEW_W = 360;
-  const VIEW_H = 560;
-  const LOOP_CX = 180;
-  const LOOP_CY = 190;
-  const LOOP_R = 150;
-  const GAP_DEG = 26; // espace laissé en bas de la boucle pour la médaille
+  const VIEW_W = 420;
+  const VIEW_H = 660;
+  const LOOP_CX = 210;
+  const LOOP_CY = 220;
+  const LOOP_R = 175;
+  const GAP_DEG = 30; // espace laissé en bas de la boucle pour la médaille
 
-  const R_SMALL = 6;
-  const R_LARGE = 9;
-  const R_MEDAL = 12;
+  const R_SMALL = 7;
+  const R_LARGE = 11;
+  const R_MEDAL = 15;
+  const R_CROSS = 16;
+
+  const TAIL_SMALL_GAP = 42; // espacement entre grains de la chaînette
+  const TAIL_LARGE_GAP = 48; // médaille/petits grains -> grain large
+  const TAIL_CROSS_GAP = 52; // grain large -> croix
 
   function polarToXY(cx, cy, r, angleDeg) {
     const rad = ((angleDeg - 90) * Math.PI) / 180;
@@ -61,20 +66,21 @@ const ROSARY = (() => {
 
     // Chaînette d'introduction, verticale, sous la médaille.
     const tailX = medalPos.x;
-    let y = medalPos.y + 34;
+    let y = medalPos.y + TAIL_SMALL_GAP;
     const tailOrder = ["medal"];
 
     ["intro-small-0", "intro-small-1", "intro-small-2"].forEach((id) => {
       beads[id] = { id, kind: "small", r: R_SMALL, x: tailX, y };
       tailOrder.push(id);
-      y += 34;
+      y += TAIL_SMALL_GAP;
     });
 
+    y += TAIL_LARGE_GAP - TAIL_SMALL_GAP;
     beads["intro-large"] = { id: "intro-large", kind: "large", r: R_LARGE, x: tailX, y };
     tailOrder.push("intro-large");
-    y += 38;
+    y += TAIL_CROSS_GAP;
 
-    beads["cross"] = { id: "cross", kind: "cross", r: 14, x: tailX, y };
+    beads["cross"] = { id: "cross", kind: "cross", r: R_CROSS, x: tailX, y };
     tailOrder.push("cross");
 
     return { beads, loopOrder, tailOrder, viewBox: `0 0 ${VIEW_W} ${VIEW_H}` };
@@ -173,16 +179,16 @@ const ROSARY = (() => {
         g.setAttribute("data-bead-id", bead.id);
         g.setAttribute("class", "bead bead-cross");
         const vBar = document.createElementNS(SVG_NS, "rect");
-        vBar.setAttribute("x", bead.x - 3);
-        vBar.setAttribute("y", bead.y - 14);
-        vBar.setAttribute("width", 6);
-        vBar.setAttribute("height", 28);
+        vBar.setAttribute("x", bead.x - 4);
+        vBar.setAttribute("y", bead.y - 18);
+        vBar.setAttribute("width", 8);
+        vBar.setAttribute("height", 36);
         vBar.setAttribute("rx", 2);
         const hBar = document.createElementNS(SVG_NS, "rect");
-        hBar.setAttribute("x", bead.x - 11);
-        hBar.setAttribute("y", bead.y - 6);
-        hBar.setAttribute("width", 22);
-        hBar.setAttribute("height", 6);
+        hBar.setAttribute("x", bead.x - 14);
+        hBar.setAttribute("y", bead.y - 8);
+        hBar.setAttribute("width", 28);
+        hBar.setAttribute("height", 8);
         hBar.setAttribute("rx", 2);
         g.appendChild(vBar);
         g.appendChild(hBar);
