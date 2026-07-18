@@ -39,13 +39,16 @@ const ROSARY = (() => {
     const startAngle = 180 - GAP_DEG / 2;
     const totalSpan = 360 - GAP_DEG;
     const segSpan = totalSpan / 5;
-
+    // les 5 segment du patter noster
     for (let d = 0; d < 5; d++) {
+      //Pour d = 0 pas de grain
       const A = startAngle - d * segSpan;
-
       const largePos = polarToXY(LOOP_CX, LOOP_CY, LOOP_R, A);
-      beads[`large-${d}`] = { id: `large-${d}`, kind: "large", r: R_LARGE, ...largePos };
-      loopOrder.push(`large-${d}`);
+
+      if(d > 0) {
+        beads[`large-${d}`] = { id: `large-${d}`, kind: "large", r: R_LARGE, ...largePos };
+        loopOrder.push(`large-${d}`);
+      }
 
       // 10 grains "Je vous salue Marie", régulièrement espacés jusqu'au
       // grain large suivant (à segSpan). Les prières Gloire au Père et
@@ -101,13 +104,17 @@ const ROSARY = (() => {
     push("cross", "prayer", { prayerKey: "credo" });
     push("intro-large", "prayer", { prayerKey: "ourFather" });
     for (let i = 0; i < 3; i++) {
-      push(`intro-small-${i}`, "prayer", { prayerKey: "hailMary" });
+      push(`intro-small-${2-i}`, "prayer", { prayerKey: "hailMary" });
     }
-    push("medal", "prayer", { prayerKey: "gloryBe" });
 
+    push("medal", "prayer", { prayerKey: "gloryBe" });
+    push("medal", "prayer", { prayerKey: "ourFather" });
+    push(`medal`, "mystery", { mysteryIndex: 0 });
     for (let d = 0; d < 5; d++) {
-      push(`large-${d}`, "mystery", { mysteryIndex: d });
-      push(`large-${d}`, "prayer", { prayerKey: "ourFather" });
+      if (d > 0) {
+        push(`large-${d}`, "prayer", { prayerKey: "ourFather" });
+        push(`large-${d}`, "mystery", { mysteryIndex: d });
+      }
       for (let i = 0; i < 10; i++) {
         push(`small-${d}-${i}`, "prayer", { prayerKey: "hailMary" });
       }
